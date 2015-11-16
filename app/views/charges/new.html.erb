@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <div id="wrapper">
+        <div class="head text-center">Buy Test Product</div>
+        <div class="body text-center">
+          <img src="assets/product.png" width="100%">
+          <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+            <label class="amount">
+              <span>Pris: 50kr</span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-name="Demo Site"
+                  data-image="assets/zoidberg.png"
+                  data-description="1 Item"
+                  data-currency="sek"
+                  data-amount="5000"
+                  data-locale="auto"></script>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
